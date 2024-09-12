@@ -1,13 +1,25 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.7acaea2f.css",
-    "main.js": "/react-homework-template/static/js/main.07d3183d.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.7acaea2f.css.map": "/react-homework-template/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-homework-template/static/js/main.07d3183d.js.map"
+    "main.css": "/expense-tracker/static/css/main.2a109ecd.css",
+    "main.js": "/expense-tracker/static/js/main.317711bb.js",
+    "static/js/315.0033b642.chunk.js": "/expense-tracker/static/js/315.0033b642.chunk.js",
+    "static/js/616.070a434f.chunk.js": "/expense-tracker/static/js/616.070a434f.chunk.js",
+    "static/js/547.8bf63381.chunk.js": "/expense-tracker/static/js/547.8bf63381.chunk.js",
+    "static/js/667.05507cbd.chunk.js": "/expense-tracker/static/js/667.05507cbd.chunk.js",
+    "static/media/Rectangle 1.png": "/expense-tracker/static/media/Rectangle 1.58a91cda48bfcfb70d5d.png",
+    "static/media/user_01.png": "/expense-tracker/static/media/user_01.a4f09884bcbd2793d162.png",
+    "static/media/user_02.png": "/expense-tracker/static/media/user_02.03aa354456de5dc8d0fd.png",
+    "static/media/user_03.png": "/expense-tracker/static/media/user_03.cdd2badfb8227540f9d4.png",
+    "index.html": "/expense-tracker/index.html",
+    "main.2a109ecd.css.map": "/expense-tracker/static/css/main.2a109ecd.css.map",
+    "main.317711bb.js.map": "/expense-tracker/static/js/main.317711bb.js.map",
+    "315.0033b642.chunk.js.map": "/expense-tracker/static/js/315.0033b642.chunk.js.map",
+    "616.070a434f.chunk.js.map": "/expense-tracker/static/js/616.070a434f.chunk.js.map",
+    "547.8bf63381.chunk.js.map": "/expense-tracker/static/js/547.8bf63381.chunk.js.map",
+    "667.05507cbd.chunk.js.map": "/expense-tracker/static/js/667.05507cbd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.2a109ecd.css",
+    "static/js/main.317711bb.js"
   ]
 }
