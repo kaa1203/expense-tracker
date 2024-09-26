@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { deleteCategory } from "../../redux/category/operations";
 import { setModal } from "../../redux/modal/modalSlice";
-import { useCategory } from "../../hooks/useCategory";
+import { useTransaction } from "hooks/useTransaction";
 
 export const Categories = ({ category, type, cateProps }) => {
 	const formCate = document.querySelector('#formCateInput');
@@ -22,11 +22,12 @@ export const Categories = ({ category, type, cateProps }) => {
 	const selected = formCate.value === category.categoryName;
 
 	const dispatch = useDispatch();
-	const { categoryIsError } = useCategory();
+	const { transactions } = useTransaction();
 
 	const handleIconOnClick = e => {
 		const dataType = e.currentTarget.dataset.value;
-
+		const cateExist = transactions[type].find(tran => tran.category.categoryName.toLowerCase() === category.categoryName.toLowerCase());
+		
 		if (category._id) {
 			if (dataType !== "delete") {
 				const cateInput = document.querySelector('#cateInput');
@@ -40,7 +41,7 @@ export const Categories = ({ category, type, cateProps }) => {
 					type
 				}));
 				
-				if (categoryIsError) {
+				if (cateExist) {
 					toast.error('Category cannot be deleted, since some transaction relies on it!', {
 						theme: 'dark',
 						autoClose: 2500

@@ -1670,3 +1670,130 @@ export const ClockIcon = styled(Icon)`
 		padding-left: 50px;
 	}
 `;
+
+export const SkeletonLogo = styled(WrapperRow)`
+	padding: 0 20px;
+`;
+
+export const SkeletonWrapper = styled(WrapperRow)`
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: ${props => props.$type === 'nav' && '50px'};
+	border-bottom: ${props => props.$type === 'nav' && '1px solid var(--dark-gray)'};
+
+	@media ${device.mobile} {
+		align-items: ${props => props.$type === 'transaction' && 'center'};
+		width: 375px;
+
+		flex-direction: ${props => 
+			(props.$type === 'header' ||
+			props.$type === 'transaction') && 'column' };
+	}
+		
+	@media ${device.tablet} {
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: ${props => 
+			(props.$type === 'header' ||
+			props.$type === 'tran-header') && 'column' };
+		width: ${props => props.$type !== 'nav' && '705px' };
+		margin: 0 auto;
+	}
+
+	@media ${device.mobile} {
+		flex-direction: ${props => 
+			(props.$type === 'tran-header' ||
+			props.$type === 'tran-wrapper'
+			) && 'column' };
+	}
+`;
+
+export const SkeletonWrapperCol = styled(WrapperColumn)`
+	gap: ${props => props.$type === 'header' ? '10px' : '30px'};
+	width: ${props => props.$type === 'header' ? '630px' : '100%'};
+
+	@media ${device.tablet} {
+		width: 705px;
+		margin-top: ${props => props.$type === 'header' && '50px'};
+	}
+`;
+
+export const SkeletonButton = styled.div `
+	padding: 10px 25px;
+	border-radius: 30px;
+	height: 40px;
+	width: 130px;
+	background: linear-gradient(to right, rgba(143, 142, 141,0.75) 0%, rgba(237, 235, 233, 0.75) 50%, rgba(143, 142, 141, 0.75) 100%) 0px 0px / 100% 100% rgba(243, 242, 241, 0.5);
+  animation: ${animation} 1.25s ease-in-out calc(-1 * 1.25s) infinite alternate;
+	
+	&:first-child {
+		margin-right: 15px;
+	}
+	
+	@media ${device.tablet} {
+		display: none;
+	}
+
+	@media ${device.mobile} {
+		display: none;
+	}
+`;
+
+export const SkeletonProfile = styled(SkeletonButton)`
+	width: 220px;
+	height: 45px;
+`;
+
+export const SkeletonContent = styled.div`
+	width: ${props => 
+		props.$type === 'table' ? '1190px' : 
+		props.$type === 'form' ? '100%' :
+		props.$type === 'chart' ? '630px' : '16px' };
+	height: ${props => 
+		props.$type === 'table' ? '450px' : 
+		props.$type === 'form' ? '530px':
+		props.$type === 'chart' ? '300px': '16px' };
+	border-radius: 30px;
+	background: linear-gradient(to right, rgba(143, 142, 141,0.75) 0%, rgba(237, 235, 233, 0.75) 50%, rgba(143, 142, 141, 0.75) 100%) 0px 0px / 100% 100% rgba(243, 242, 241, 0.5);
+  animation: ${animation} 1.25s ease-in-out calc(-1 * 1.25s) infinite alternate;
+  
+  @media ${device.tablet} {
+		width: 100%;
+  }
+
+  @media ${device.mobile} {
+		width: 375px;
+  }
+`;
+
+export const SkeletonTransaction = styled(SkeletonContent)`
+	// width: 300px;
+	width: ${props => props.$type === 'transaction' ? '300px' : '100%'};
+	height: 110px;
+
+	@media ${device.tablet} {
+		width: 100%;
+	}
+
+	@media ${device.mobile} {
+		width: 100%;
+	}
+`;
+
+export const SkeletonText = styled(SkeletonButton)`
+	width: ${props => 
+		props.$type === 'header' ? '180px' :
+		props.$type === 'long-text' ? '90%' : '75%' 
+	};
+	
+	height: ${props => props.$type === 'header' ? '40px' : '16px' };
+	margin-top: ${props => props.$type === 'short-text' && '5px' };
+
+	@media ${device.tablet} {
+		display: block;
+	}
+
+	@media ${device.mobile} {
+		display: block;
+	}
+`;	

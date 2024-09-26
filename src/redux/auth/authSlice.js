@@ -6,7 +6,8 @@ import {
 	pageRefresh, 
 	refreshUser,
 	changeProfile,
-	changeDp
+	changeDp,
+	removeDp
 } from "./operations";
 
 const handleOnPending = state => {
@@ -98,7 +99,10 @@ const authSlice = createSlice({
 		})
 		.addCase(changeDp.fulfilled, (state, action) => {
 			state.user.avatarURL = action.payload;
-			console.log(action.payload)
+			state.user.isLoading = false;
+		})
+		.addCase(removeDp.fulfilled, state => {
+			state.user.avatarURL = null;
 		})
 	}
 });

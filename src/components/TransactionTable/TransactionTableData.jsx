@@ -31,6 +31,13 @@ export const dateConverter = date => {
 	return `${month} ${d[2]}. ${d[0]}`;
 }
 
+export const shortenLongComment = (comment) => {
+	if (comment.length <= 15) {
+		return comment;
+	}
+	return comment.slice(0, 15)+"...";
+}
+
 export const TransactionTableData = ({transaction}) => {
 	const dispatch = useDispatch();
 	
@@ -63,7 +70,7 @@ export const TransactionTableData = ({transaction}) => {
 	return (
 		<TableRow>
 			<TableData>{transaction.category.categoryName}</TableData>
-			<TableData>{transaction.comment}</TableData>
+			<TableData>{shortenLongComment(transaction.comment)}</TableData>
 			<TableData>{dateConverter(transaction.date)}</TableData>
 			<TableData>{transaction.time}</TableData>
 			<TableData>{transaction.sum}</TableData>

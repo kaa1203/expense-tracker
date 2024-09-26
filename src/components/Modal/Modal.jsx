@@ -28,7 +28,7 @@ import { toast } from "react-toastify";
 import { IoCloseOutline } from "react-icons/io5";
 import { setModal } from "../../redux/modal/modalSlice";
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/auth/operations";
+import { logout, refreshUser, removeDp } from "../../redux/auth/operations";
 import { useModal } from "../../hooks/useModal";
 import { useAuth } from "../../hooks/useAuth";
 import { useCategory } from "../../hooks/useCategory";
@@ -58,9 +58,9 @@ export const Modal = () => {
 	const [categoryOption, setCategoryOption] = useState('');
 	const [editCategory, setEditCategory] = useState(false);
 	const [avatar, setAvatar] = useState('');
-
+ 
 	const type = modalType.toLowerCase();
-	
+
 	useEffect(() => {
 		if (modalType) {
 			document.body.style.overflow = "hidden";
@@ -83,10 +83,11 @@ export const Modal = () => {
 		if (avatar) {	
 			const fd = new FormData();
 			fd.append("avatar", avatar);
+			
 			dispatch(changeDp(fd));
-			// My last resort T_T I didn't manage to fix this one...
-			// I'll fix you later!
-			setTimeout(() => window.location.reload(), 1500);
+			setTimeout(() => {
+				dispatch(refreshUser());
+			}, 2500);
 		}
 		
 		if (currency) {
@@ -96,6 +97,21 @@ export const Modal = () => {
 			}));
 		}
 		dispatch(setModal({ value: false }));
+		toast.success('Profile Updated!', { theme: 'dark', autoClose: 1200 });
+		document.body.style.overflow = 'auto';
+	}
+
+	const handleDpRemove = () => {
+		const lastIndex = user.avatarUrl.lastIndexOf('/');
+		const avatarId = user.avatarUrl.slice(lastIndex + 1, user.avatarUrl.length-5);
+
+		dispatch(setModal({ value: false }));
+		document.body.style.overflow = "auto";
+
+		dispatch(removeDp(avatarId));
+		setTimeout(() => {
+			dispatch(refreshUser());
+		}, 2500);
 		toast.success('Profile Updated!', { theme: 'dark', autoClose: 1200 });
 	}
 
@@ -244,6 +260,7 @@ export const Modal = () => {
 							<Button
 								$type="profile" 
 								color="grey"
+								onClick={handleDpRemove}
 							>
 								Remove
 							</Button>

@@ -117,7 +117,6 @@ export const changeDp = createAsyncThunk(
 	'auth/changeDp',
 	async(avatarUrl, thunkAPI) => {
 		try {
-			console.log(avatarUrl);
 			const { accToken } = requestBody(thunkAPI);
 			setAuthHeader(accToken);
 			const res = await axios.patch('users/avatar', avatarUrl);
@@ -127,3 +126,17 @@ export const changeDp = createAsyncThunk(
 		} 
 	}
 );
+
+export const removeDp = createAsyncThunk(
+	'auth/removeDp', 
+	async(avatarId, thunkAPI) => {
+		try {
+			const { accToken } = requestBody(thunkAPI);
+			setAuthHeader(accToken);
+
+			return await axios.delete(`users/avatar/${avatarId}`);
+		} catch (e) {
+			thunkAPI.rejectWithValue(e.message)
+		}
+	}
+)

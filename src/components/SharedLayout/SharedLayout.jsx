@@ -26,13 +26,13 @@ import { useDispatch } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations";
 import { Modal } from "../Modal/Modal";
 import { setModal } from "../../redux/modal/modalSlice";
-import { Loader } from "../Loader/Loader";
 import { fetchTransactions } from "../../redux/transaction/operations";
 import { fetchCategories } from "../../redux/category/operations";
 import { TbMenu } from "react-icons/tb";
 import { MobileMenu } from "components/Modal/MobileMenu";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PageSkeleton } from "components/Loader/PageSkeleton";
 
 export const SharedLayout = () => {
 	const { showModal, modalType } = useModal();
@@ -114,7 +114,7 @@ export const SharedLayout = () => {
 	return (
 		<>
 			<Container $type={isLoggedIn.toString()}>
-				{ !isLoggedIn &&
+				{ (!isLoggedIn && !isRefreshing) &&
 					<NavWoAuth>
 						<Link to="/">
 							<Logo />
@@ -193,7 +193,7 @@ export const SharedLayout = () => {
 						</Burger>
 					</NavWAuth>
 				}
-				{!isLoggedIn &&
+				{(!isLoggedIn && !isRefreshing) &&
 				<NavWoAuth $type="mobile">
 					<Link to="/">
 						<Logo />
@@ -206,7 +206,7 @@ export const SharedLayout = () => {
 				{ !isRefreshing ?
 					<Outlet />
 					:
-					<Loader/>
+					<PageSkeleton />
 				}
 				{ showModal && 
 					<Overlay
