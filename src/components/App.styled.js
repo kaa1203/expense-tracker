@@ -646,7 +646,7 @@ export const Input = styled.input`
 	
 	&::-webkit-calendar-picker-indicator {
     background: none;
-	 padding-right: 40px; 
+	 padding-right: 35px; 
 	}
 	
 	@media ${device.tablet} {
@@ -657,7 +657,8 @@ export const Input = styled.input`
 	}
 	
 	@media ${device.mobile} {
-		padding: ${props => props.$type === 'time' && '10px 0px'};
+		min-width: ${props => props.$type === 'time' && '145px'};
+		padding: ${props => props.$type === 'time' && '10px 0 10px 12px'};
 	}
 `;
 
@@ -1167,7 +1168,7 @@ export const ModalWrapper = styled(WrapperColumn)`
 		overflow: ${props => props.$height < 600 && 'auto'};
 	}
 	
-	// yeeeeeep, you see it right I've copy pasted it since I don't have much time so give me some slack here hehehe. 
+	// yeeeeeep! you see it right, I've copy pasted it since I don't have much time, so give me some slack here hehehe. 
 
 	@media ${device.tablet} {
 		padding-top: ${props => 
@@ -1369,7 +1370,7 @@ export const InputPlaceholder = styled.div`
 		'var(--grey-transparent)'};
 
 	@media ${device.mobile} {
-		padding-left: 2px;
+		padding-left: 10px;
 	}
 `;
 export const CalendarInput = styled(WrapperRow)`
@@ -1623,7 +1624,7 @@ export const Patch = styled.p`
 	position: absolute;
 	top: ${props => 
 		props.$type === 'cate' ||
-		props.$type === 'cur' ? '35px' : '9px'};
+		props.$type === 'cur' ? '35px' : '7px'};
 	left: ${props => 
 		props.$type === 'cate' ? '15px' : 
 		props.$type === 'cur' ? '88%' :

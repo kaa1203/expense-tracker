@@ -129,7 +129,11 @@ export const TransactionTable = () => {
 									</ThPadding>
 								</TableHead>
 								<TableHead scope="col">Time</TableHead>
-								<TableHead scope="col">Sum</TableHead>
+								<TableHead scope="col">
+									<ThPadding>
+										Sum	
+									</ThPadding>
+								</TableHead>
 								<TableHead scope="col">Action</TableHead>
 							</TableRow>
 						</THead>
