@@ -71,7 +71,7 @@ export const HomeForm = () => {
 			const local = JSON.parse(localStorage.getItem('log-data'));
 			if (current === '/signin' && local !== null) {
 				setEmail(local.email)
-				console.log(logError)
+				
 				if (logError === 403) {
 					setEmailInput({
 						state: true,

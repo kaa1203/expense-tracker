@@ -1797,3 +1797,29 @@ export const SkeletonText = styled(SkeletonButton)`
 		display: block;
 	}
 `;	
+
+export const NotFoundCon = styled(Container)`
+	position: relative;
+`;
+
+export const NotFoundImg = styled.img`
+	height: 100vh;
+	object-fit: fill;
+`;
+
+export const NotFoundText = styled.p`
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 50px;
+	color: var(--white);
+
+	@media ${device.tablet} {
+		font-size: 30px;
+	}
+
+	@media ${device.mobile} {
+		font-size: 18px;
+	}
+`;

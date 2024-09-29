@@ -32,7 +32,7 @@ import { TbMenu } from "react-icons/tb";
 import { MobileMenu } from "components/Modal/MobileMenu";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { PageSkeleton } from "components/Loader/PageSkeleton";
+import { Loader } from "components/Loader/Loader";
 
 export const SharedLayout = () => {
 	const { showModal, modalType } = useModal();
@@ -114,7 +114,7 @@ export const SharedLayout = () => {
 	return (
 		<>
 			<Container $type={isLoggedIn.toString()}>
-				{ (!isLoggedIn && !isRefreshing) &&
+				{ !isLoggedIn &&
 					<NavWoAuth>
 						<Link to="/">
 							<Logo />
@@ -193,7 +193,7 @@ export const SharedLayout = () => {
 						</Burger>
 					</NavWAuth>
 				}
-				{(!isLoggedIn && !isRefreshing) &&
+				{!isLoggedIn &&
 				<NavWoAuth $type="mobile">
 					<Link to="/">
 						<Logo />
@@ -206,7 +206,7 @@ export const SharedLayout = () => {
 				{ !isRefreshing ?
 					<Outlet />
 					:
-					<PageSkeleton />
+					<Loader />
 				}
 				{ showModal && 
 					<Overlay

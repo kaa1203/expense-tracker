@@ -102,6 +102,8 @@ export const Modal = () => {
 	}
 
 	const handleDpRemove = () => {
+		if (!user.avatarUrl) return;
+		
 		const lastIndex = user.avatarUrl.lastIndexOf('/');
 		const avatarId = user.avatarUrl.slice(lastIndex + 1, user.avatarUrl.length-5);
 

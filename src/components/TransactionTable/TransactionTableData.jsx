@@ -15,6 +15,7 @@ import { setModal } from "../../redux/modal/modalSlice";
 import { deleteTransaction } from "../../redux/transaction/operations";
 import { useDispatch } from "react-redux";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const dateConverter = date => {
 	const monthArray = [
@@ -40,7 +41,7 @@ export const shortenLongComment = (comment) => {
 
 export const TransactionTableData = ({transaction}) => {
 	const dispatch = useDispatch();
-	
+	const { user } = useAuth();
 	const { width } = useScreenWidth();
 
 	const handleOnClick = e => {
@@ -73,7 +74,7 @@ export const TransactionTableData = ({transaction}) => {
 			<TableData>{shortenLongComment(transaction.comment)}</TableData>
 			<TableData>{dateConverter(transaction.date)}</TableData>
 			<TableData>{transaction.time}</TableData>
-			<TableData>{transaction.sum}</TableData>
+			<TableData>{transaction.sum} / {user.currency.toUpperCase()}</TableData>
 			<TableData>
 				<TableButtonWrapper>
 					<Button 
